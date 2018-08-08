@@ -4,7 +4,9 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case "GENERATE_ARRAY":
+    case "GENERATE_STARTED":
+      return state;
+    case "GENERATE_FINISHED":
       return {
         ...state,
         generatedArray: action.generatedArray

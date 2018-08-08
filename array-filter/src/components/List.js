@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import './list.css';
 
-class List extends Component {
+export default class List extends Component {
   render() {
     return (
-    <h2>Список</h2>
+    <div>
+      <h2>Список</h2>
+    </div>
     );
   }
 }
 
-function mapStateToProps(state) {
-  return {};
-}
 
-export default connect(mapStateToProps)(List);
