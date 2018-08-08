@@ -1,8 +1,6 @@
-const initialState = {
-  generatedArray: []
-};
+const initialState = {};
 
-export default function reducer(state = initialState, action) {
+export function mainReducer(state = initialState, action) {
   switch (action.type) {
     case "GENERATE_STARTED":
       return state;
