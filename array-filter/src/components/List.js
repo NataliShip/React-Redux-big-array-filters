@@ -11,10 +11,12 @@ class List extends Component {
 
   render() {
     return (
-    <div>
-      <h2>Список</h2>
-      <ul>
-        {this.props.array ? this.props.array.map((item, index) => <li key={index}>{item}</li>) : ''}
+    <div className={'list'}>
+      <h1 className={'list__header'}>Первая часть задания: Вывести список</h1>
+      <h2 className={'list__subheader'}>Список</h2>
+      <ul className={'list__generated-list'}>
+        {this.props.array ? this.props.array.map((item, index) =>
+          <li key={index} className={'list__item'}><b>label:</b> <span>{item['label']}</span> <b>value:</b> <span>{item['value']}</span></li>) : ''}
       </ul>
     </div>
     );

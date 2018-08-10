@@ -6,8 +6,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-          <h1>Первая часть задания: Вывести список</h1>
+      <div className="app">
         <List></List>
       </div>
     );
