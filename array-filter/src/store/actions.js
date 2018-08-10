@@ -4,13 +4,13 @@ export const generateArray = () => {
   return (dispatch) => {
       dispatch(generateStarted());
       function generateArr(number) {
-        var array = [];
-        for (var i = 0; i < number; i++ ){
+        let array = [];
+        for (let i = 0; i < number; i++ ){
           function makeLabel() {
-            var text = "";
-            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+            let text = "";
+            let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-            for (var i = 0; i < 5; i++) {
+            for (let i = 0; i < 5; i++) {
               text += possible.charAt(Math.floor(Math.random() * possible.length));
             } return text;
           }
@@ -28,4 +28,8 @@ const generateStarted = () => {
 
 const generateFinished = (newArray) => {
   return { type: types.GENERATE_FINISHED, generatedArray: newArray }
+};
+
+export const addArrayItem = (item) => {
+  return { type: types.ADD_ARRAY_ITEM, item: item }
 };

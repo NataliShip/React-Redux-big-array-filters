@@ -51,3 +51,15 @@
 .list__item b {
   color: #999;
 }
+.list__btn {
+  cursor: pointer;
+  background: #999;
+  color: #fff;
+  border: none;
+  height: 21px;
+}
+.list__notice {
+  margin-left: 40px;
+  font-size: 10px;
+  color: #333;
+}
