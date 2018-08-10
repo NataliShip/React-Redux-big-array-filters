@@ -14,9 +14,17 @@ class List extends Component {
     <div className={'list'}>
       <h1 className={'list__header'}>Первая часть задания: Вывести список</h1>
       <h2 className={'list__subheader'}>Список</h2>
+      <input className={'list__add'} type="text" placeholder={'Добавить элемент к массиву'}/>
       <ul className={'list__generated-list'}>
-        {this.props.array ? this.props.array.map((item, index) =>
-          <li key={index} className={'list__item'}><b>label:</b> <span>{item['label']}</span> <b>value:</b> <span>{item['value']}</span></li>) : ''}
+        {this.props.array ? this.props.array.map((item, index) => {
+          if(item['label'] && item['value']) {
+            return (
+            <li key={index} className={'list__item'}>
+              <b>label:</b> <span>{item['label']}</span> <b>value:</b> <span>{item['value']}</span>
+            </li>
+            )} else return (
+            <li key={index} className={'list__item'}>{item}</li>
+          )}) : ''}
       </ul>
     </div>
     );

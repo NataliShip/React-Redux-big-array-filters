@@ -13,6 +13,9 @@
   color: #333;
   margin-left: 40px;
 }
+.list__add {
+  margin-left: 40px;
+}
 .list__generated-list {
   list-style-type: none;
 }
