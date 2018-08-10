@@ -37,3 +37,7 @@ export const addArrayItem = (item) => {
 export const delArrayItem = (element) => {
   return { type: types.DELETE_ARRAY_ITEM, el: element }
 };
+
+export const changeArrayItem = (index, label, val) => {
+  return { type: types.CHANGE_ARRAY_ITEM, label: label, value: val, index:index }
+};

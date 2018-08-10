@@ -63,3 +63,13 @@
   font-size: 10px;
   color: #333;
 }
+.list__change-form {
+  display: none;
+}
+.list__change-input {
+  width: 140px;
+  margin: 10px 0;
+}
+.list__change-form.active{
+  display: block;
+}

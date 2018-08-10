@@ -26,20 +26,44 @@ class List extends Component {
             return (
             <li key={index} className={'list__item'}>
               <b>label:</b> <span>{item['label']}</span> <b>value:</b> <span>{item['value']}</span>
-              <i className={'list__change'}></i>
+              <i className={'list__change'} onClick={(event) => toggleChangeForm(event)}></i>
               <i className={'list__delete'} onClick={() => this.props.delArrayItem(item)}></i>
+              <div className={'list__change-form'} id={'change-form'}>
+                <input className={'list__change-input'} type="text" placeholder={'label'}/>
+                <input className={'list__change-input'} type="text" placeholder={'value'}/>
+                <button className={'list__btn'} onClick={(event) => {
+                  const el = event.target;
+                  const inputs =  el.parentNode.querySelectorAll('input');
+                  const label = inputs[0].value;
+                  const value = inputs[1].value;
+                  this.props.changeArrayItem(index, label, value);
+                }}>
+                  Ok
+                </button>
+              </div>
             </li>
             )} else if (typeof item !== 'object') return (
             <li key={index} className={'list__item'}>
               {item}
-              <i className={'list__change'}></i>
+              <i className={'list__change'} onClick={(event) => toggleChangeForm(event)}></i>
               <i className={'list__delete'} onClick={() => this.props.delArrayItem(item)}></i>
+              <div className={'list__change-form'} id={'change-form'}>
+                <input className={'list__change-input'} type="text" placeholder={'label'}/>
+                <input className={'list__change-input'} type="text" placeholder={'value'}/>
+                <button className={'list__btn'}>Ok</button>
+              </div>
             </li>
           )}) : ''}
       </ul>
     </div>
     );
   }
+}
+
+function toggleChangeForm(event) {
+  const el = event.target;
+  const changeForm =  el.parentNode.querySelectorAll('div #change-form')[0];
+  changeForm.classList.toggle('active');
 }
 
 function mapStateToProps(state) {
@@ -52,6 +76,7 @@ function mapDispatchToProps(dispatch) {
   return ({
     addArrayItem: (item) => {dispatch(actions.addArrayItem(item))},
     delArrayItem: (item) => {dispatch(actions.delArrayItem(item))},
+    changeArrayItem: (index, label, val) => {dispatch(actions.changeArrayItem(index, label, val))},
     generateArray: () => {dispatch(actions.generateArray())}
   })
 }
