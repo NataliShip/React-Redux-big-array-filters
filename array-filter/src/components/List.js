@@ -21,8 +21,10 @@ class List extends Component {
             return (
             <li key={index} className={'list__item'}>
               <b>label:</b> <span>{item['label']}</span> <b>value:</b> <span>{item['value']}</span>
+              <i className={'list__change'}></i>
+              <i className={'list__delete'}></i>
             </li>
-            )} else return (
+            )} else if (typeof item !== 'object') return (
             <li key={index} className={'list__item'}>{item}</li>
           )}) : ''}
       </ul>

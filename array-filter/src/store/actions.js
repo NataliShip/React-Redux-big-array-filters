@@ -12,12 +12,10 @@ export const generateArray = () => {
 
             for (var i = 0; i < 5; i++) {
               text += possible.charAt(Math.floor(Math.random() * possible.length));
-            }
-            return text;
+            } return text;
           }
           array.push({label:makeLabel(), value: Math.floor(Math.random() * number)});
-        }
-        return array;
+        } return array;
       }
       const arr = generateArr(10000);
       dispatch(generateFinished(arr));

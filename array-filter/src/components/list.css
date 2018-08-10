@@ -15,12 +15,38 @@
 }
 .list__add {
   margin-left: 40px;
+  width: 200px;
+}
+.list__delete {
+  background: url(../assets/delete.svg);
+  background-size: cover;
+  width: 12px;
+  height: 12px;
+  margin-left: 10px;
+  cursor: pointer;
+  display: none;
+}
+.list__change {
+  background: url(../assets/checkbox-pen-outline.svg);
+  background-size: cover;
+  display: none;
+  width: 14px;
+  height: 14px;
+  margin-left: 20px;
+  cursor: pointer;
+
 }
 .list__generated-list {
   list-style-type: none;
 }
 .list__item {
   color: #333;
+}
+.list__item:hover .list__change {
+  display: inline-block;
+}
+.list__item:hover .list__delete {
+  display: inline-block;
 }
 .list__item b {
   color: #999;
