@@ -16,6 +16,12 @@ export function mainReducer(state = initialState, action) {
         ...state,
         generatedArray: [...state.generatedArray, action.item]
       };
+    case types.DELETE_ARRAY_ITEM:
+      console.log([action.el])
+      return {
+        ...state,
+        generatedArray: state.generatedArray.filter(item => item !== action.el)
+      };
     default:
       return state;
   }

@@ -33,3 +33,7 @@ const generateFinished = (newArray) => {
 export const addArrayItem = (item) => {
   return { type: types.ADD_ARRAY_ITEM, item: item }
 };
+
+export const delArrayItem = (element) => {
+  return { type: types.DELETE_ARRAY_ITEM, el: element }
+};
