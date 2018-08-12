@@ -80,3 +80,48 @@ const generateArrayWithFieldsStarted = () => {
 const generateArrayWithFieldsFinished = (newArray) => {
   return { type: types.GENERATE_ARRAY_WITH_FIELDS_FINISHED, array: newArray }
 };
+
+export const clearArrays = () => {
+  return { type: types.CLEAR_ARRAYS }
+};
+
+export const filterArray = ({string, prop}, ...rest) => {
+  return (dispatch) => {
+    dispatch(filterArraysStarted());
+    function filterArr({string, prop}, ...rest) {
+      var array = [];
+      for (var i = 0; i < rest.length; i++) {
+        array = array.concat(rest[i]);
+      }
+
+      function filterProps(el) {
+        var suitable = false;
+        for (var key in el) {
+          if (key == string) {
+
+            suitable = true;
+          } else if (el[key] == string) {
+
+            suitable = true;
+          }
+        }
+        return suitable;
+      }
+      if (prop) {
+        return array.filter( (el) => el[prop] == string );
+      } else return array.filter( (el) => filterProps(el) );
+    }
+
+    const arr = filterArr({string, prop}, ...rest);
+    console.log(arr);
+    dispatch(filterArraysFinished(arr));
+  }
+}
+
+const filterArraysStarted = () => {
+  return { type: types.FILTER_ARRAYS_STARTED }
+};
+
+const filterArraysFinished = (filteredArray) => {
+  return { type: types.FILTER_ARRAYS_FINISHED, filteredArray: filteredArray }
+};

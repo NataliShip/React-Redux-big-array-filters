@@ -1,7 +1,8 @@
 import * as types from './actionTypes';
 
 const initialState = {
-  randomArrays: []
+  randomArrays: [],
+  filteredArray: []
 };
 
 export function mainReducer(state = initialState, action) {
@@ -42,6 +43,20 @@ export function mainReducer(state = initialState, action) {
         randomArrays: [
           ...state.randomArrays, action.array
         ]
+      };
+    case types.CLEAR_ARRAYS:
+      return {
+        ...state,
+        randomArrays: []
+      };
+    case types.FILTER_ARRAYS_STARTED:
+      return {
+        ...state
+      };
+    case types.FILTER_ARRAYS_FINISHED:
+      return {
+        ...state,
+        filteredArray: action.filteredArray
       };
     default:
       return state;
