@@ -1,3 +1,4 @@
+Запуск проекта: *npm install (yarn)*, далее *npm run start (yarn start)* Проект запустится на http://localhost:3000/
 # React-Redux-big-array-filters
 Тестовое задание на React/Redux генерируются массивы по умолчанию 10000 элементов и создан фильтр по нескольким массивам по ключам и значениям
 
