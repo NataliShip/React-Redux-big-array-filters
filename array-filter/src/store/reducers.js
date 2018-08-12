@@ -1,6 +1,8 @@
 import * as types from './actionTypes';
 
-const initialState = {};
+const initialState = {
+  randomArrays: []
+};
 
 export function mainReducer(state = initialState, action) {
   switch (action.type) {
@@ -22,9 +24,6 @@ export function mainReducer(state = initialState, action) {
         generatedArray: state.generatedArray.filter(item => item !== action.el)
       };
     case types.CHANGE_ARRAY_ITEM:
-      const newArr = state.generatedArray;
-      newArr[action.index].label = action.label;
-      state.generatedArray[action.index].value = action.value;
       return {
         ...state,
         change: [
@@ -32,6 +31,17 @@ export function mainReducer(state = initialState, action) {
           state.generatedArray[action.index].value = action.value
         ],
         generatedArray: [...state.generatedArray]
+      };
+    case types.GENERATE_ARRAY_WITH_FIELDS_STARTED:
+      return {
+        ...state
+      };
+    case types.GENERATE_ARRAY_WITH_FIELDS_FINISHED:
+      return {
+        ...state,
+        randomArrays: [
+          ...state.randomArrays, action.array
+        ]
       };
     default:
       return state;

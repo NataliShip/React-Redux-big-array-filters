@@ -41,3 +41,42 @@ export const delArrayItem = (element) => {
 export const changeArrayItem = (index, label, val) => {
   return { type: types.CHANGE_ARRAY_ITEM, label: label, value: val, index:index }
 };
+
+export const generateArrayWithFields = () => {
+  return (dispatch) => {
+    dispatch(generateArrayWithFieldsStarted());
+    function generateArrayWithRandomFields(number) {
+      var array = [];
+      for (var i = 0; i < number; i++ ){
+        function makeLabel() {
+          var text = "";
+          var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+          for (var i = 0; i < 5; i++) {
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+          }
+          return text;
+        }
+        var fieldsNames = ['Lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit', 'eiusmod', 'tempor', 'incididunt', 'labore', 'magna', 'aliqua', 'enim' ];
+        var element = {};
+        for (var j = 0; j <= (Math.floor(Math.random() * 10)); j++) {
+          element[`${fieldsNames[(Math.floor(Math.random() * 15))]}`] = makeLabel();
+        }
+        array.push(element);
+      }
+      return array;
+    }
+
+    const arrWithFields = generateArrayWithRandomFields(10000);
+    console.log(arrWithFields);
+    dispatch(generateArrayWithFieldsFinished(arrWithFields));
+  }
+}
+
+const generateArrayWithFieldsStarted = () => {
+  return { type: types.GENERATE_ARRAY_WITH_FIELDS_STARTED }
+};
+
+const generateArrayWithFieldsFinished = (newArray) => {
+  return { type: types.GENERATE_ARRAY_WITH_FIELDS_FINISHED, array: newArray }
+};

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './Filter.css';
 import {connect} from "react-redux";
+import * as actions from "../store/actions";
 
-export default class Filter extends Component {
+class Filter extends Component {
 
   render() {
     return (
@@ -11,7 +12,7 @@ export default class Filter extends Component {
         <div className={'filter__generate'}>
           <p>Введите необходимое число массивов для генерации. Массивы выведутся в консоль (F12->Console)</p>
           <input id={'array-count'} type="text" placeholder={0}/>
-          <button className={'filter__btn'}>Сгенерировать</button>
+          <button className={'filter__btn'} onClick={() => this.props.generateArrayWithFields()}>Сгенерировать</button>
         </div>
         <div className={'filter__params'}>
           <p className={'filter__notice'}>*Лучше посмотреть значение для фильтрации в сгенерированных массивах, потому что они генерируются случайно.
@@ -30,3 +31,17 @@ export default class Filter extends Component {
       </div>
     )}
 }
+
+function mapStateToProps(state) {
+  return {
+
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return ({
+    generateArrayWithFields: () => {dispatch(actions.generateArrayWithFields())}
+  })
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);
